@@ -12,12 +12,12 @@ import { MdModeEditOutline, MdDelete, MdArchive } from "react-icons/md";
 import { IoMdRefresh } from "react-icons/io"
 import { useRouter } from 'next/router';
 
-const Content = ({ id, heading, detail, time: { seconds } }) => {
+const Content = ({ id, heading, detail, time }) => {
     const { data: session, status } = useSession();
     const [showModal, setShowModal] = useState(false);
     const [newHeading, setNewHeading] = useState(heading);
     const [newDetail, setNewDetail] = useState(detail);
-    const date = new Date(seconds * 1000);
+    const date = new Date(time?.seconds * 1000);
     const router = useRouter();
 
     const updateNewContent = () => {
@@ -44,8 +44,6 @@ const Content = ({ id, heading, detail, time: { seconds } }) => {
         })
         db.collection("userNotes").doc(session.user.email).collection("notes").doc(id).delete({
         })
-
-        router.push("/archived");
     }
 
     const deleteNoteHandler = () => {
@@ -59,7 +57,6 @@ const Content = ({ id, heading, detail, time: { seconds } }) => {
         })
         db.collection("userNotes").doc(session.user.email).collection("notes").doc(id).delete({
         })
-        router.push("/deleted");
     }
 
     const modal = (

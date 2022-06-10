@@ -14,13 +14,20 @@ const TextEditor = () => {
     heading: "",
     detail: ""
   });
+  const [allNotes, setAllNotes] = useState([])
 
-  const [snapshot] = useCollectionOnce(
+  useEffect(() => {
     db.collection('userNotes')
       .doc(session?.user.email)
       .collection('notes')
       .orderBy('timestamp', 'desc')
-  );
+      .onSnapshot((querySnapshot) => {
+        setAllNotes([])
+        querySnapshot.forEach((doc) => {
+          setAllNotes((oldDocs) => [...oldDocs, doc])
+        })
+      })
+  }, [])
 
   const hideContentAndsaveContent = () => {
     if (!session) {
@@ -31,14 +38,14 @@ const TextEditor = () => {
       fileDetail: note.detail,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     })
-    
+
     setShowTextArea(false);
     setNote({
       heading: "",
       detail: ""
     })
 
-    console.log(snapshot);
+    // console.log(snapshot);
 
   }
 
@@ -47,7 +54,9 @@ const TextEditor = () => {
     setNote(updatedValue);
   }
 
-  console.log(note);
+  allNotes.map((note) => {
+    console.log(note.data())
+  })
 
 
   return (
@@ -67,13 +76,13 @@ const TextEditor = () => {
 
       </div>
       <div className='flex flex-wrap items-center ml-6'>
-        {snapshot?.docs.map((doc) => (
+        {allNotes?.map((doc) => (
           <Content
             key={doc.id}
             id={doc.id}
             heading={doc.data().fileHeading}
             detail={doc.data().fileDetail}
-            time = {doc.data().timestamp}
+            time={doc.data().timestamp}
           />
         ))}
       </div>
