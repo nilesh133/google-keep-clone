@@ -36,7 +36,7 @@ function Header() {
 
             <div className="hidden sm:flex flex-grow items-center bg-gray-100 text-gray-600 px-5 rounded-lg mx-5 focus-within:drop-shadow-md focus-within:bg-white p-2 md:mx-28 sm:mx-20">
                 <BiSearch className="text-gray-600 text-lg" />
-                <input type="text" placeholder="Search" className="flex-grow bg-transparent outline-none px-5 font-opensans" />
+                <input type="text" placeholder="Search" className="flex-grow bg-transparent outline-none px-5 font-opensans font-semibold" />
             </div>
 
             <div className="flex flex-center items-center">
