@@ -71,7 +71,7 @@ const Content = ({ id, heading, detail, time }) => {
                     value={newHeading}
                     onChange={(e) => setNewHeading(e.target.value)}
                     type="text"
-                    className='outline-none modal-w modal-bp-1:modal-w-bp-1 modal-bp-2:modal-w-bp-2 modal-bp-3:modal-w-bp-3'
+                    className='outline-none modal-w modal-bp-1:modal-w-bp-1 modal-bp-2:modal-w-bp-2 modal-bp-3:modal-w-bp-3 font-bold'
                     placeholder='Title'
                     onKeyDown={(e) => e.key === "Enter" && updateNewContent()}
                 />
@@ -82,7 +82,7 @@ const Content = ({ id, heading, detail, time }) => {
                 <textarea
                     value={newDetail}
                     onChange={(e) => setNewDetail(e.target.value)}
-                    className='outline-none modal-w h-40 modal-bp-1:modal-w-bp-1 modal-bp-2:modal-w-bp-2 modal-bp-3:modal-w-bp-3'
+                    className='outline-none modal-w h-40 modal-bp-1:modal-w-bp-1 modal-bp-2:modal-w-bp-2 modal-bp-3:modal-w-bp-3 font-semibold text-gray-600'
                     placeholder='Take a note'
                     onKeyDown={(e) => e.key === "Enter" && updateNewContent()}
                 />
@@ -120,11 +120,11 @@ const Content = ({ id, heading, detail, time }) => {
             <div className="group m-2 py-2 px-3 flex flex-col h-40 rounded-md cursor-pointer content-shadow hover:content-hover-shadow transition duration-500 
             content-w content-bp-1:content-w-bp-1 content-bp-2:content-w-bp-2">
                 <div className="flex justify-between items-center">
-                    <h3 className="text-sm font-semibold">{heading.slice(0, 25)}{heading.length > 25 ? "..." : " "}</h3>
+                    <h3 className="text-[16px] font-bold">{heading.slice(0, 25)}{heading.length > 25 ? "..." : " "}</h3>
                     <span className="text-lg text-gray-700 content-shadow p-1 rounded-xl opacity-0 group-hover:opacity-100 transition duration-700" onClick={() => setShowModal(true)}><MdModeEditOutline /></span>
                 </div>
 
-                <p className="text-gray-700 text-lg mt-2">{detail.slice(0, 40)}{detail.length > 40 ? "..." : " "}</p>
+                <p className="text-lg mt-2 font-semibold text-gray-500">{detail.slice(0, 40)}{detail.length > 40 ? "..." : " "}</p>
                 <div className="flex ml-auto mt-auto">
                     <span className="text-lg text-gray-700 content-shadow p-1 rounded-xl mr-2" onClick={() => archiveNoteHandler()}><MdArchive /></span>
                     <span className="text-lg text-gray-700 content-shadow p-1 rounded-xl" onClick={() => deleteNoteHandler()}><MdDelete /></span>

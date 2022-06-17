@@ -29,14 +29,14 @@ function Header() {
                     layout="fill"
                 />
                 <div className="flex items-center p-2 outline-none border-none">
-                    <h1 className="text-xl text-[#5F6368] tracking-normal ml-8">Keep</h1>
+                    <h1 className="text-xl text-[#5F6368] tracking-normal ml-8 font-semibold">Keep</h1>
                 </div>
             </div>
 
 
             <div className="hidden sm:flex flex-grow items-center bg-gray-100 text-gray-600 px-5 rounded-lg mx-5 focus-within:drop-shadow-md focus-within:bg-white p-2 md:mx-28 sm:mx-20">
                 <BiSearch className="text-gray-600 text-lg" />
-                <input type="text" placeholder="Search" className="flex-grow bg-transparent outline-none px-5" />
+                <input type="text" placeholder="Search" className="flex-grow bg-transparent outline-none px-5 font-opensans" />
             </div>
 
             <div className="flex flex-center items-center">

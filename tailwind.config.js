@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'opensans': ['Quicksand', 'sans-serif']
+      },
       screens: {
         'nlg': '1320px',
         'content-bp-1': '700px',

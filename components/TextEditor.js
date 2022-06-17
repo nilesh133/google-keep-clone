@@ -6,7 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useCollectionOnce } from "react-firebase-hooks/firestore";
 import Content from "./Content";
 
-const TextEditor = () => {
+const TextEditor = ({allFilteredNotes}) => {
   const { data: session, status } = useSession();
 
   const [showTextArea, setShowTextArea] = useState(false);
@@ -60,7 +60,7 @@ const TextEditor = () => {
 
 
   return (
-    <div className='flex flex-col' style={{ width: "100%" }}>
+    <div className='flex flex-col font-opensans' style={{ width: "100%" }}>
       <div className={"flex mx-auto flex-col my-10 box-shadow px-2 py-1 rounded-md w-5/6 content-bp-1:w-4/6 content-bp-2:w-3/6" + (showTextArea ? " h-26" : " h-10")}>
         { }
         <input type="text" value={note.heading} name="heading" onChange={(e) => handleChange(e)} placeholder='Title goes here' className='p-2 border-0 outline-none text-sm font-semibold placeholder-style' onClick={() => setShowTextArea(true)} />
@@ -76,7 +76,7 @@ const TextEditor = () => {
 
       </div>
       <div className='flex flex-wrap items-center ml-6'>
-        {allNotes?.map((doc) => (
+        {allFilteredNotes?.map((doc) => (
           <Content
             key={doc.id}
             id={doc.id}
